@@ -9,9 +9,13 @@ EventEmitter.prototype.on = function(name, callback) {
   this.events[name].push(callback);
 };
 
-EventEmitter.prototype.emit = function(name, data) {
+EventEmitter.prototype.emit = function(name, data1, data2) {
   var event = this.events[name];
-  if (event) event.forEach(function(callback) {
-    callback(data);
-  });
+  if (event) {
+    event.forEach(function(callback) {
+      callback(data1, data2);
+    });
+  }
 };
+
+module.exports = EventEmitter;

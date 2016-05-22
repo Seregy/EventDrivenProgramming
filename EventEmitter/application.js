@@ -1,9 +1,9 @@
 'use strict';
 
 global.api = {};
-require('./events.js');
+var enhancedEmitter = require('./events.js');
 
-global.application = api.events.enhancedEventEmitter();
+global.application = new enhancedEmitter();
 
 application.on('smth', function(data) {
   console.dir(data);

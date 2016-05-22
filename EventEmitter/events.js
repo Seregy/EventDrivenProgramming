@@ -1,9 +1,10 @@
 'use strict';
 
 api.events = require('events');
+var eventEmitter = require('./emitter.js');
 
-api.events.enhancedEventEmitter = function() {
-  var ee = new api.events.EventEmitter(),
+global.enhancedEventEmitter = function() {
+  var ee = new eventEmitter(),
       emit = ee.emit;
   ee.emit = function() {
     var args = [];
@@ -14,3 +15,5 @@ api.events.enhancedEventEmitter = function() {
   };
   return ee;
 };
+
+module.exports = enhancedEventEmitter;
